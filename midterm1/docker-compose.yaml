@@ -1,0 +1,33 @@
+services:
+  db:
+    image: "postgres:13"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: sdupass
+      POSTGRES_DB: midterm
+    volumes:
+      - "db-data:/var/lib/postgresql/data"
+    ports:
+      - "5432:5432"
+
+  flyway:
+    image: "flyway/flyway:7.15.0"
+    depends_on:
+      - db
+    volumes:
+      - "./flyway/sql:/flyway/sql"
+      - "./flyway/flyway.conf:/flyway/conf/flyway.conf"
+    command: [ "migrate" ]
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - flyway
+      - db
+    ports:
+      - "8080:8080"
+
+volumes:
+  db-data:

@@ -1,0 +1,8 @@
+---
+database:
+  url: "postgres://admin:sdupass@db:5432/midterm?sslmode=disable"
+  max_open_conn: 10
+  max_idle_conn: 5
+
+server:
+  port: 8080
