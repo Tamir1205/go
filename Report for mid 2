@@ -1,0 +1,23 @@
+Mid 1 and Mid 2 in one Folder:
+To start application you can just type docker compose up
+
+urls for Mid 2:
+
+localhost:8080/item/find?name=&rating=2-5&price=0-100- GET endpoint for filtration by 3 parameters, as you wish
+
+localhost:8080/comment/add - post endpoint for adding comments 
+{
+    "item_id":1,
+    "user_id": 2,
+    "content": "Збс яблочки",
+    "parent_id": 1
+} - request body
+
+
+localhost:8080/rating/add - adding rating to items - post endpoint
+
+{
+    "item_id":1,
+    "user_id": 2,
+    "rating": 5
+}
